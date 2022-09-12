@@ -2,6 +2,8 @@ package com.example.demo.service;
 
 import java.util.Optional;
 
+
+
 import javax.transaction.Transactional;
 
 
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Employe;
 import com.example.demo.repository.EmployeRepository;
+
+
 
 
 
@@ -36,6 +40,17 @@ public class EmployeServiceImpl implements EmployeService {
 	public Optional<Employe> find(Integer id) {
 		
 		return this.employeeRepository.findById(id);
+	}
+	
+	@Override
+	public Iterable<Employe> findAll() {
+		return this.employeeRepository.findAll();
+	}
+	
+	@Override
+	public boolean delete(Employe student) {
+		this.employeeRepository.delete(student);
+		return true;
 	}
 
 

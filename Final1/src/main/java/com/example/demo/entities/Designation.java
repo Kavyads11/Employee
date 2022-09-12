@@ -1,7 +1,6 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,14 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Service;
-
-
-
 @Entity
-@Table(name="department")
+@Table(name="designation")
 
-public class Department implements Serializable{
+public class Designation implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -30,11 +25,12 @@ public class Department implements Serializable{
 	
 	//private Set<Employe> students = new HashSet<Employe>(0);
 	
-	public Department() {}
+	public Designation() {}
 	
-	public Department(String name) {
+	public Designation(String name) {
 		this.name = name;
 	}
+	
 	
 	
 	
@@ -59,7 +55,7 @@ public class Department implements Serializable{
 	}
 	/*
 	//Onetomany -- One department may contain many studentes
-		@OneToMany(fetch=FetchType.LAZY, mappedBy = "department") //FetchType.Lazy loads the entities only when necessary good when dealing with lots of records
+		@OneToMany(fetch=FetchType.LAZY, mappedBy = "designation") //FetchType.Lazy loads the entities only when necessary good when dealing with lots of records
 		public Set<Employe> getStudents(){
 			return this.students;
 		}
@@ -70,8 +66,8 @@ public class Department implements Serializable{
 
 		@Override
 		public String toString() {
-			return "Department [id=" + id + ", name=" + name + ", students=" + students + "]";
+			return "Designation [id=" + id + ", name=" + name + ", students=" + students + "]";
 		}
 */
-	
+		
 }

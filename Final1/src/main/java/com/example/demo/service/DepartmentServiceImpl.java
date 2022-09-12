@@ -2,12 +2,17 @@ package com.example.demo.service;
 
 import java.util.Optional;
 
+
+
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Department;
+import com.example.demo.entities.Employe;
+
 import com.example.demo.repository.DepartmentRepository;
 
 
@@ -25,4 +30,35 @@ public class DepartmentServiceImpl implements DepartmentService{
 	{
 		return this.departmentRepository.findById(id);
 	}
+	
+	@Override
+	public Department save(Department employee) {
+		return this.departmentRepository.save(employee);
+	}
+	
+	
+	public  Department  getEmployee(int id)
+	{
+		return departmentRepository.findById(id).get();
+	}
+	
+	
+	public Department update(Department employee) 
+	{
+		Department emp= departmentRepository.findById(employee.getId()).get();
+		emp.setName(employee.getName());
+		
+		
+		return departmentRepository.save(emp);
+	}
+	
+	public String delete(int id)
+	{
+		departmentRepository.deleteById(id);
+		return "Entity deleted "+id;
+	}
+
+	
+	
+	
 }

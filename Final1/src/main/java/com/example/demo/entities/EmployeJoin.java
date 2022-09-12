@@ -6,8 +6,9 @@ public class EmployeJoin {
 	
 	private Integer id;
 	private String name;
-	private Double designation;
+	private Double age;
 	private String departmentName;
+	private String designation;
 	
 	public Integer getId() {
 		return id;
@@ -21,12 +22,7 @@ public class EmployeJoin {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Double getDesignation() {
-		return designation;
-	}
-	public void setDesignation(Double designation) {
-		this.designation = designation;
-	}
+	
 	public String getDepartmentName() {
 		return departmentName;
 	}
@@ -38,13 +34,27 @@ public class EmployeJoin {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public EmployeJoin(Integer id, String name, Double designation, String departmentName) {
+	public Double getAge() {
+		return age;
+	}
+	public void setAge(Double age) {
+		this.age = age;
+	}
+	public String getDesignation() {
+		return designation;
+	}
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+	public EmployeJoin(Integer id, String name, Double age, String departmentName, String designation) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.designation = designation;
+		this.age = age;
 		this.departmentName = departmentName;
+		this.designation = designation;
 	}
+	
 	
 	
 	

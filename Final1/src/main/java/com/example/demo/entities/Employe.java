@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="student")
+@Table(name="employe")
 public class Employe {
 
 	
@@ -25,6 +25,8 @@ public class Employe {
 	private String name;
 	private Double age;
 	private Department department;
+	private Designation designation;
+	
 	
 public Employe() {}
 	
@@ -33,13 +35,21 @@ public Employe() {}
 		this.age = age;
 	}
 	
-	public Employe(Integer id,String name,Double age,Department department) {
+	public Employe(Integer id,String name,Double age,Department department,Designation designation) {
 		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.department = department;
+		this.designation=designation;
 	}
 	
+	
+	
+	public Employe(Integer id) {
+		super();
+		this.id = id;
+	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id",unique = true,nullable = false)
@@ -60,11 +70,13 @@ public Employe() {}
 		this.name=name;
 	}
 	
-	@Column(name="designation",nullable = false)
+	@Column(name="age",nullable = false)
 	public Double getCgpa() {
 		return this.age;
 	}
 	
+	
+
 	public void setCgpa(Double age) {
 		this.age = age;
 	}
@@ -79,4 +91,22 @@ public Employe() {}
 	public void setDepartment(Department department) {
 		this.department= department;
 	}
+	
+	
+	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many students belong to one department
+	@JoinColumn(name="desid",nullable = false)
+	public Designation getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(Designation designation) {
+		this.designation = designation;
+	}
+
+	@Override
+	public String toString() {
+		return "Employe [id=" + id + ", name=" + name + ", age=" + age + ", department=" + department + ", designation="
+				+ designation + "]";
+	}
+	
 }
