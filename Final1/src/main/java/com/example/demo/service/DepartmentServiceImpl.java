@@ -32,27 +32,27 @@ public class DepartmentServiceImpl implements DepartmentService{
 	}
 	
 	@Override
-	public Department save(Department employee) {
-		return this.departmentRepository.save(employee);
+	public Department saveDepartment(Department department) {
+		return this.departmentRepository.save(department);
 	}
 	
 	
-	public  Department  getEmployee(int id)
+	public  Department  getDepartment(int id)
 	{
 		return departmentRepository.findById(id).get();
 	}
 	
 	
-	public Department update(Department employee) 
+	public Department updateDepartment(Department department) 
 	{
-		Department emp= departmentRepository.findById(employee.getId()).get();
-		emp.setName(employee.getName());
+		Department emp= departmentRepository.findById(department.getId()).get();
+		emp.setName(department.getName());
 		
 		
 		return departmentRepository.save(emp);
 	}
 	
-	public String delete(int id)
+	public String deleteDepartment(int id)
 	{
 		departmentRepository.deleteById(id);
 		return "Entity deleted "+id;

@@ -9,9 +9,9 @@ import com.example.demo.entities.Employe;
 
 public interface DepartmentService {
 	public Optional<Department> find(Integer id);
-	public Department save(Department student);
-	public  Department  getEmployee(int id);
-	public Department update(Department employee);
-	public String delete(int id);
+	public Department saveDepartment(Department department);
+	public  Department  getDepartment(int id);
+	public Department updateDepartment(Department department);
+	public String deleteDepartment(int id);
 	
 }

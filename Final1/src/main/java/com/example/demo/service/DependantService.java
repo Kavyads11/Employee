@@ -9,9 +9,9 @@ import com.example.demo.entities.Employe;
 
 public interface DependantService {
 	public Optional<Dependants> find(Integer id);
-	public Dependants insert(Dependants student);
-	public Dependants update(Dependants employee);
-	public boolean delete(Dependants student);
+	public Dependants insertDependants(Dependants dependant);
+	public Dependants updateDependants(Dependants dependant);
+	public boolean deleteDependants(Dependants dependant);
 	
 	
 }

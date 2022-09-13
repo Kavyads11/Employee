@@ -26,30 +26,30 @@ public class EmployeServiceImpl implements EmployeService {
 	private EmployeRepository employeeRepository;
 
 	@Override
-	public Employe insert(Employe employee) {
+	public Employe insertEmploye(Employe employee) {
 		return this.employeeRepository.save(employee);
 	}
 	
 	@Override
-	public Employe update(Employe student) {
+	public Employe updateEmploye(Employe employe) {
 
-		return this.employeeRepository.save(student);
+		return this.employeeRepository.save(employe);
 	}
 	
 	@Override
-	public Optional<Employe> find(Integer id) {
+	public Optional<Employe> findEmploye(Integer id) {
 		
 		return this.employeeRepository.findById(id);
 	}
 	
 	@Override
-	public Iterable<Employe> findAll() {
+	public Iterable<Employe> findAllEmploye() {
 		return this.employeeRepository.findAll();
 	}
 	
 	@Override
-	public boolean delete(Employe student) {
-		this.employeeRepository.delete(student);
+	public boolean deleteEmploye(Employe employe) {
+		this.employeeRepository.delete(employe);
 		return true;
 	}
 

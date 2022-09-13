@@ -7,9 +7,9 @@ import com.example.demo.entities.Designation;
 
 public interface DesignationService {
 	public Optional<Designation> find(Integer id);
-	public Designation save(Designation student);
+	public Designation saveDesignation(Designation designation);
 	public Designation  getDesignation(int id);
-	public Designation update(Designation employee);
-	public String delete(int id);
+	public Designation updateDesignation(Designation designation);
+	public String deleteDesignation(int id);
 
 }

@@ -28,9 +28,9 @@ public class DesignationServiceImpl implements DesignationService{
 		return this.designationRepository.findById(id);
 	}
 	
-	public Designation save(Designation emp)
+	public Designation saveDesignation(Designation designation)
 	{
-		return designationRepository.save(emp);   // to store the data
+		return designationRepository.save(designation);   // to store the data
 	}
 	
 	public Designation  getDesignation(int id)
@@ -38,19 +38,20 @@ public class DesignationServiceImpl implements DesignationService{
 		return designationRepository.findById(id).get();
 	}
 	
-	public Designation update(Designation employee) 
+	public Designation updateDesignation(Designation designation) 
 	{
-		Designation emp= designationRepository.findById(employee.getId()).get();
-		emp.setName(employee.getName());
+		Designation desig= designationRepository.findById(designation.getId()).get();
+		desig.setName(designation.getName());
 		
 		
-		return designationRepository.save(emp);
+		return designationRepository.save(desig);
 	}
 	
-	public String delete(int id)
+	public String deleteDesignation(int id)
 	{
 		designationRepository.deleteById(id);
 		return "Entity deleted "+id;
 	}
+
 	
 }

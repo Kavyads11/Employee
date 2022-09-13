@@ -31,24 +31,24 @@ public class DependantServiceImpl implements DependantService {
 		return this.dependantRepository.findById(id);
 	}
 	
-	public Dependants insert(Dependants emp)
+	public Dependants insertDependants(Dependants dependant)
 	{
-		return dependantRepository.save(emp);   // to store the data
+		return dependantRepository.save(dependant);   // to store the data
 	}
 
 	
-	public Dependants update(Dependants employee) 
+	public Dependants updateDependants(Dependants dependant) 
 	{
-		Dependants emp= dependantRepository.findById(employee.getId()).get();
-		emp.setName(employee.getName());
+		Dependants depend= dependantRepository.findById(dependant.getId()).get();
+		depend.setName(dependant.getName());
 		
 		
-		return dependantRepository.save(emp);
+		return dependantRepository.save(depend);
 	}
 	
 	@Override
-	public boolean delete(Dependants student) {
-		this.dependantRepository.delete(student);
+	public boolean deleteDependants(Dependants dependant) {
+		this.dependantRepository.delete(dependant);
 		return true;
 	}
 

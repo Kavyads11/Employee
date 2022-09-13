@@ -16,10 +16,10 @@ import com.example.demo.entities.EmployeJoin;
 
 public interface EmployeService {
 	
-	public Employe insert(Employe student);
-	public Employe update(Employe student);
-	public Optional<Employe> find(Integer id);
-	public Iterable<Employe> findAll();
-	public boolean delete(Employe student);
+	public Employe insertEmploye(Employe employe);
+	public Employe updateEmploye(Employe employe);
+	public Optional<Employe> findEmploye(Integer id);
+	public Iterable<Employe> findAllEmploye();
+	public boolean deleteEmploye(Employe employe);
 
 }
