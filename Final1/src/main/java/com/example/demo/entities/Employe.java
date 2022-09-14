@@ -21,10 +21,24 @@ public class Employe {
 	
 	private static final long serialVersionUID = 1L;
 	
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id",unique = true,nullable = false)
 	private Integer id;
+	
+	@Column(name="name",nullable = false)
 	private String name;
+	
+	@Column(name="age",nullable = false)
 	private Double age;
+	
+	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many students belong to one department
+	@JoinColumn(name="deptid",nullable = false)
 	private Department department;
+	
+	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many students belong to one department
+	@JoinColumn(name="desid",nullable = false)
 	private Designation designation;
 	
 	
@@ -50,9 +64,7 @@ public Employe() {}
 		this.id = id;
 	}
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id",unique = true,nullable = false)
+	
 	public Integer getId() {
 		return this.id;
 	}
@@ -61,7 +73,7 @@ public Employe() {}
 		this.id = id;
 	}
 	
-	@Column(name="name",nullable = false)
+	
 	public String getName() {
 		return this.name;
 	}
@@ -70,14 +82,14 @@ public Employe() {}
 		this.name=name;
 	}
 	
-	@Column(name="age",nullable = false)
-	public Double getCgpa() {
+	
+	public Double getAge() {
 		return this.age;
 	}
 	
 	
 
-	public void setCgpa(Double age) {
+	public void setAge(Double age) {
 		this.age = age;
 	}
 	
@@ -93,8 +105,7 @@ public Employe() {}
 	}
 	
 	
-	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many students belong to one department
-	@JoinColumn(name="desid",nullable = false)
+	
 	public Designation getDesignation() {
 		return designation;
 	}

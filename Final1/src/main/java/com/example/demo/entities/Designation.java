@@ -20,7 +20,13 @@ public class Designation implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
+	
+	@Id //specified the primary key
+	@GeneratedValue(strategy=GenerationType.IDENTITY) //uses the database identity column
+	@Column(name="id",unique = true,nullable = false) //name is optional is variable name matches table field name
 	private Integer id;
+	
+	@Column(name="name",nullable = false) // nullable checks whether null accepted, before db throws error
 	private String name;
 	
 	//private Set<Employe> students = new HashSet<Employe>(0);
@@ -30,13 +36,7 @@ public class Designation implements Serializable{
 	public Designation(String name) {
 		this.name = name;
 	}
-	
-	
-	
-	
-	@Id //specified the primary key
-	@GeneratedValue(strategy=GenerationType.IDENTITY) //uses the database identity column
-	@Column(name="id",unique = true,nullable = false) //name is optional is variable name matches table field name
+
 	public Integer getId() {
 		return this.id;
 	}
@@ -45,7 +45,7 @@ public class Designation implements Serializable{
 		this.id = id;
 	}
 	
-	@Column(name="name",nullable = false) // nullable checks whether null accepted, before db throws error
+	
 	public String getName() {
 		return this.name;
 	}

@@ -18,19 +18,30 @@ public class Dependants implements Serializable{
 	
 private static final long serialVersionUID = 1L;
 	
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id",unique = true,nullable = false)
 	private Integer id;
+
+    @ManyToOne(fetch=FetchType.LAZY)//Manytoone since many students belong to one department
+    @JoinColumn(name="empid",nullable = false)
 	private Employe emp_id;
+
+    @Column(name="name",nullable = false)
 	private String name;
+
+    @Column(name="relation",nullable = false)
 	private String relation;
+
+    @Column(name="age",nullable = false)
 	private Double age;
 	
 	
 	public Dependants() {
 		super();
 	}
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id",unique = true,nullable = false)
+	
 	public Integer getId() {
 		return id;
 	}
@@ -39,8 +50,7 @@ private static final long serialVersionUID = 1L;
 	}
 	
 	
-	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many students belong to one department
-	@JoinColumn(name="empid",nullable = false)
+
 	public Employe getEmp_id() {
 		return emp_id;
 	}
@@ -48,7 +58,7 @@ private static final long serialVersionUID = 1L;
 		this.emp_id = emp_id;
 	}
 	
-	@Column(name="name",nullable = false)
+	
 	public String getName() {
 		return name;
 	}
@@ -56,7 +66,7 @@ private static final long serialVersionUID = 1L;
 		this.name = name;
 	}
 	
-	@Column(name="relation",nullable = false)
+	
 	public String getRelation() {
 		return relation;
 	}
@@ -64,7 +74,7 @@ private static final long serialVersionUID = 1L;
 		this.relation = relation;
 	}
 	
-	@Column(name="age",nullable = false)
+	
 	public Double getAge() {
 		return age;
 	}
