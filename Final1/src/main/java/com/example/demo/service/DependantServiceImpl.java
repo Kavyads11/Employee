@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.example.demo.bean.DependantBean;
 import com.example.demo.entities.Department;
 import com.example.demo.entities.Dependants;
 import com.example.demo.entities.Designation;
@@ -53,5 +54,30 @@ public class DependantServiceImpl implements DependantService {
 	}
 
 
+	@Override
+	public String addDependant(DependantBean dep) {
+		Dependants master=new Dependants();
+		Employe emp=new Employe();
+		emp.setId(dep.getEmpid().getId());
+		master.setAge(dep.getAge());
+		master.setName(dep.getName());
+		master.setRelation(dep.getRelation());
+		master.setEmp_id(emp);
+		dependantRepository.save(master);
+		return "dependant added succesfully";
+	}
 	
+	@Override
+	public String updateDependant(DependantBean dep) {
+		Dependants master=new Dependants();
+		Employe emp=new Employe();
+		emp.setId(dep.getEmpid().getId());
+		master.setAge(dep.getAge());
+		master.setId(dep.getId());
+		master.setName(dep.getName());
+		master.setRelation(dep.getRelation());
+		master.setEmp_id(emp);
+		dependantRepository.save(master);
+		return "dependant updated succesfully";
+	}
 }

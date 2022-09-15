@@ -18,12 +18,12 @@ import org.springframework.stereotype.Service;
 
 
 
-@Entity
-@Table(name="department")
+@Entity//mapped to database table
+@Table(name="department")//add the table name in the particular database
 
 public class Department implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 	
 	
 	@Id //specified the primary key

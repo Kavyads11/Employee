@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.entities.Department;
 
-
+//perform crud operation
 @Repository("departmentRepository")
 public interface DepartmentRepository extends CrudRepository<Department, Integer>{
 

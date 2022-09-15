@@ -8,9 +8,13 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.bean.DependantBean;
+import com.example.demo.bean.DesignationBean;
+import com.example.demo.bean.EmployeBean;
 import com.example.demo.entities.Department;
+import com.example.demo.entities.Dependants;
 import com.example.demo.entities.Designation;
-
+import com.example.demo.entities.Employe;
 import com.example.demo.repository.DepartmentRepository;
 import com.example.demo.repository.DesignationRepository;
 
@@ -53,5 +57,9 @@ public class DesignationServiceImpl implements DesignationService{
 		return "Entity deleted "+id;
 	}
 
+	
+	
+
+	
 	
 }

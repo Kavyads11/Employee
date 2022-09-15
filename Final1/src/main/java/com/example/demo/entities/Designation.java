@@ -13,8 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="designation")
+@Entity//mapped to database table
+@Table(name="designation")//add the table name in the particular database
 
 public class Designation implements Serializable{
 	

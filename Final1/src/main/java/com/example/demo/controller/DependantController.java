@@ -1,15 +1,25 @@
 package com.example.demo.controller;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.bean.DependantBean;
+import com.example.demo.bean.EmployeBean;
 import com.example.demo.entities.Dependants;
+import com.example.demo.entities.Employe;
 import com.example.demo.service.DependantService;
 import com.example.demo.service.EmployeService;
 
@@ -23,7 +33,7 @@ public class DependantController {
 	EmployeService employeService;
 	
 	
-	@RequestMapping(value="/dependant/insert")//inserts new student record into the table
+/*	@RequestMapping(value="/dependant/insert")//inserts new dependantS record into the table
 	public Map<String,String> insertDependants(
 			@RequestParam("name") String name,
 			@RequestParam("age") Double age,
@@ -58,7 +68,7 @@ public class DependantController {
 		return message;
 	}
 	
-	@RequestMapping(value="/dependant/update") //Updates student table
+	@RequestMapping(value="/dependant/update") //Updates dependantS table
 	public Map<String,String> updateDependants(@RequestParam("id") Integer id,@RequestParam("name") String name,@RequestParam("age") Double age,@RequestParam("relation") String relation ,@RequestParam("empid") Integer empid){
 		System.out.println("\nrunning update");
 		Map<String,String> message = new LinkedHashMap<>();
@@ -92,7 +102,8 @@ public class DependantController {
 		return message;
 	}
 	
-	@RequestMapping(value="/dependant/find/{id}")
+	*/
+	@GetMapping(value="/dependant/find/{id}")
 	public Map<String,String> findDependants(@PathVariable Integer id){
 		//@PathVariable takes the part of url as value her {id} taken as id value
 		Map<String,String> message = new LinkedHashMap<>(); // to store student details
@@ -113,7 +124,7 @@ public class DependantController {
 		return message;
 	}
 	
-	@RequestMapping(value="/dependant/delete/{id}")//deletes record from student table for the given id
+	@DeleteMapping(value="/dependant/delete/{id}")//deletes record from student table for the given id
 	public Map<String,String> deleteDependants(@PathVariable("id") Integer id){
 		System.out.println("\nrunning delete");
 		Map<String,String> message = new LinkedHashMap<>();
@@ -138,5 +149,18 @@ public class DependantController {
 			message.put("Error", "Dependant id "+id+" is not found");
 		return message;
 	}
-
+	
+	
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/dependant/add")
+	public String insertDependant(@RequestBody DependantBean dep)
+	{
+		return dependantService.addDependant(dep);
+	}
+	
+	
+	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value="/dependant/update")
+	public String updateDependant(@RequestBody DependantBean dep)
+	{
+		return dependantService.updateDependant(dep);
+	}
 }

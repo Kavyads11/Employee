@@ -14,16 +14,16 @@ import javax.persistence.Table;
 
 
 
-@Entity
-@Table(name="employe")
+@Entity//mapped to database table
+@Table(name="employe")//add the table name in the particular database
 public class Employe {
 
 	
 	private static final long serialVersionUID = 1L;
 	
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id//primary key
+	@GeneratedValue(strategy=GenerationType.IDENTITY)//auto increment
 	@Column(name="id",unique = true,nullable = false)
 	private Integer id;
 	
@@ -33,11 +33,12 @@ public class Employe {
 	@Column(name="age",nullable = false)
 	private Double age;
 	
-	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many students belong to one department
-	@JoinColumn(name="deptid",nullable = false)
+	//Lazy--only fetch the related entities from the database when we use the relationship
+	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department,
+	@JoinColumn(name="deptid",nullable = false)//used to join the entity
 	private Department department;
 	
-	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many students belong to one department
+	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
 	@JoinColumn(name="desid",nullable = false)
 	private Designation designation;
 	

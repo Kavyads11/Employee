@@ -12,20 +12,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="dependants")
+@Entity//mapped to database table
+@Table(name="dependants")//add the table name in the particular database
 public class Dependants implements Serializable{
 	
 private static final long serialVersionUID = 1L;
 	
 
-    @Id
+    @Id//primary key
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id",unique = true,nullable = false)
 	private Integer id;
 
-    @ManyToOne(fetch=FetchType.LAZY)//Manytoone since many students belong to one department
-    @JoinColumn(name="empid",nullable = false)
+    
+  //Lazy--only fetch the related entities from the database when we use the relationship
+    @ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one employe
+    @JoinColumn(name="empid",nullable = false)//used to join the entity
 	private Employe emp_id;
 
     @Column(name="name",nullable = false)

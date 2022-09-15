@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entities.Department;
 import com.example.demo.entities.Dependants;
 
+
+//perform crud operation
 @Repository("dependantRepository")
 public interface DependantRepository extends CrudRepository<Dependants, Integer>{
 
