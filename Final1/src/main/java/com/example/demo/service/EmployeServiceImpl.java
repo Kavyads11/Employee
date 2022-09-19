@@ -55,6 +55,7 @@ public class EmployeServiceImpl implements EmployeService {
 		return true;
 	}
 	
+	
 /*	public List<Employe> getAllEmployees(){
 		List<Employe> emps = (List<Employe>)employeeRepository.findAll(); 
 		return emps;
@@ -69,7 +70,7 @@ public class EmployeServiceImpl implements EmployeService {
 		department.setId(emp.getDepartment().getId());
 		designation.setId(emp.getDesignation().getId());
 		//master.setId(emp.getId());
-		master.setAge(emp.getAge());
+		master.setjoiningdate(emp.getjoiningdate());
 		master.setDepartment(department);
 		master.setDesignation(designation);
 		master.setName(emp.getName());
@@ -85,13 +86,15 @@ public class EmployeServiceImpl implements EmployeService {
 		department.setId(emp.getDepartment().getId());
 		designation.setId(emp.getDesignation().getId());
 		master.setId(emp.getId());
-		master.setAge(emp.getAge());
+		master.setjoiningdate(emp.getjoiningdate());
 		master.setDepartment(department);
 		master.setDesignation(designation);
 		master.setName(emp.getName());
 		employeeRepository.save(master);
 		return "employe updated succesfully";
 	}
+
+	
 	
 	
 	

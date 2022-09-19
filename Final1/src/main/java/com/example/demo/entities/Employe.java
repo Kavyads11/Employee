@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,8 +32,8 @@ public class Employe {
 	@Column(name="name",nullable = false)
 	private String name;
 	
-	@Column(name="age",nullable = false)
-	private Double age;
+	@Column(name="joiningdate",nullable = false)
+	private Date joiningdate;
 	
 	//Lazy--only fetch the related entities from the database when we use the relationship
 	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department,
@@ -45,15 +47,15 @@ public class Employe {
 	
 public Employe() {}
 	
-	public Employe(String name,Double age) {
+	public Employe(String name,Date joiningdate) {
 		this.name = name;
-		this.age = age;
+		this.joiningdate = joiningdate;
 	}
 	
-	public Employe(Integer id,String name,Double age,Department department,Designation designation) {
+	public Employe(Integer id,String name,Date joiningdate,Department department,Designation designation) {
 		this.id = id;
 		this.name = name;
-		this.age = age;
+		this.joiningdate = joiningdate;
 		this.department = department;
 		this.designation=designation;
 	}
@@ -84,14 +86,14 @@ public Employe() {}
 	}
 	
 	
-	public Double getAge() {
-		return this.age;
+	public Date getJoiningDate() {
+		return this.joiningdate;
 	}
 	
 	
 
-	public void setAge(Double age) {
-		this.age = age;
+	public void setjoiningdate(Date joiningdate) {
+		this.joiningdate = joiningdate;
 	}
 	
 	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many students belong to one department
@@ -117,7 +119,7 @@ public Employe() {}
 
 	@Override
 	public String toString() {
-		return "Employe [id=" + id + ", name=" + name + ", age=" + age + ", department=" + department + ", designation="
+		return "Employe [id=" + id + ", name=" + name + ", joiningdate=" + joiningdate + ", department=" + department + ", designation="
 				+ designation + "]";
 	}
 	

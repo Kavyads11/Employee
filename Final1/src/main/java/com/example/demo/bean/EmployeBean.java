@@ -1,11 +1,13 @@
 package com.example.demo.bean;
 
+import java.util.Date;
+
 public class EmployeBean {
 
 	
 	private Integer id;
 	private String name;
-	private Double age;
+	private Date joiningdate;
 	private DesignationBean designation;
 	private DepartmentBean department;
 
@@ -25,17 +27,17 @@ public class EmployeBean {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Double getAge() {
-		return age;
+	public Date getjoiningdate() {
+		return joiningdate;
 	}
-	public void setAge(Double age) {
-		this.age = age;
+	public void setjoiningdate(Date joiningdate) {
+		this.joiningdate = joiningdate;
 	}
-	public EmployeBean(Integer id, String name, Double age, DesignationBean designation, DepartmentBean department) {
+	public EmployeBean(Integer id, String name, Date joiningdate, DesignationBean designation, DepartmentBean department) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.age = age;
+		this.joiningdate = joiningdate;
 		this.designation = designation;
 		this.department = department;
 	}

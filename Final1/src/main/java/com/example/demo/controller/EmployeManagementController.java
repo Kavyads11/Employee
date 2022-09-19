@@ -132,7 +132,7 @@ public class EmployeManagementController {
 				message = new LinkedHashMap<>(); // to store invidual's info
 				message.put("ID", foundEmploye.getId().toString());
 				message.put("Name", foundEmploye.getName());
-				message.put("Age", foundEmploye.getAge().toString());
+				message.put("Age", foundEmploye.getJoiningDate().toString());
 				message.put("Department", foundEmploye.getDepartment().getName());
 				message.put("Designation", foundEmploye.getDesignation().getName());
 				listOfMessages.add(message); // list of individual's info
@@ -159,8 +159,9 @@ public class EmployeManagementController {
 				//Getting student detail with help of getter methods
 				message.put("ID", foundEmploye.getId().toString());
 				message.put("Name", foundEmploye.getName());
-				message.put("Age", foundEmploye.getAge().toString());
+				message.put("Age", foundEmploye.getJoiningDate().toString());
 				message.put("Department", foundEmploye.getDepartment().getName());
+				message.put("Designation", foundEmploye.getDesignation().getName());
 			}
 			else { 
 				message.put("Error","Cannot find employe with id "+id);
@@ -178,7 +179,7 @@ public class EmployeManagementController {
 				
 				message.put("ID", oldEmploye.getId().toString());
 				message.put("Name", oldEmploye.getName());
-				message.put("Age", oldEmploye.getAge().toString());
+				message.put("Age", oldEmploye.getJoiningDate().toString());
 				message.put("Department", oldEmploye.getDepartment().getName());
 				message.put("Designation", oldEmploye.getDesignation().getName());
 				
