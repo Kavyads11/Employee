@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity//mapped to database table
-@Table(name="designation")//add the table name in the particular database
+@Table(name="DESIGNATION")//add the table name in the particular database
 
 public class Designation implements Serializable{
 	
@@ -23,10 +23,10 @@ public class Designation implements Serializable{
 	
 	@Id //specified the primary key
 	@GeneratedValue(strategy=GenerationType.IDENTITY) //uses the database identity column
-	@Column(name="id",unique = true,nullable = false) //name is optional is variable name matches table field name
+	@Column(name="ID",unique = true,nullable = false) //name is optional is variable name matches table field name
 	private Integer id;
 	
-	@Column(name="name",nullable = false) // nullable checks whether null accepted, before db throws error
+	@Column(name="NAME",nullable = false) // nullable checks whether null accepted, before db throws error
 	private String name;
 	
 	//private Set<Employe> students = new HashSet<Employe>(0);

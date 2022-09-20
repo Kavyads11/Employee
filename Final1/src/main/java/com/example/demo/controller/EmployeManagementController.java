@@ -135,6 +135,8 @@ public class EmployeManagementController {
 				message.put("Age", foundEmploye.getJoiningDate().toString());
 				message.put("Department", foundEmploye.getDepartment().getName());
 				message.put("Designation", foundEmploye.getDesignation().getName());
+				message.put("PermanentAddress", foundEmploye.getAddress().getPermanentAddress());
+				message.put("CurrentAddress", foundEmploye.getAddress().getCurrentAddress());
 				listOfMessages.add(message); // list of individual's info
 			}
 		}
@@ -162,6 +164,8 @@ public class EmployeManagementController {
 				message.put("Age", foundEmploye.getJoiningDate().toString());
 				message.put("Department", foundEmploye.getDepartment().getName());
 				message.put("Designation", foundEmploye.getDesignation().getName());
+				message.put("PermanentAddress", foundEmploye.getAddress().getPermanentAddress());
+				message.put("CurrentAddress", foundEmploye.getAddress().getCurrentAddress());
 			}
 			else { 
 				message.put("Error","Cannot find employe with id "+id);
@@ -182,6 +186,9 @@ public class EmployeManagementController {
 				message.put("Age", oldEmploye.getJoiningDate().toString());
 				message.put("Department", oldEmploye.getDepartment().getName());
 				message.put("Designation", oldEmploye.getDesignation().getName());
+				message.put("CurrentAddress", oldEmploye.getAddress().getCurrentAddress());
+				message.put("PermanentAddress", oldEmploye.getAddress().getPermanentAddress());
+				
 				
 				if(this.employeService.deleteEmploye(oldEmploye)) 
 					message.put("Success", "Employe successfully removed");

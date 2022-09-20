@@ -2,6 +2,7 @@ package com.example.demo.entities;
 
 import java.util.Date;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
 
 
 @Entity//mapped to database table
-@Table(name="employe")//add the table name in the particular database
+@Table(name="EMPLOYE")//add the table name in the particular database
 public class Employe {
 
 	
@@ -26,42 +27,62 @@ public class Employe {
 	
 	@Id//primary key
 	@GeneratedValue(strategy=GenerationType.IDENTITY)//auto increment
-	@Column(name="id",unique = true,nullable = false)
+	@Column(name="ID",unique = true,nullable = false)
 	private Integer id;
 	
-	@Column(name="name",nullable = false)
+	@Column(name="NAME",nullable = false)
 	private String name;
 	
-	@Column(name="joiningdate",nullable = false)
+	@Column(name="JOININGDATE",nullable = false)
 	private Date joiningdate;
 	
 	//Lazy--only fetch the related entities from the database when we use the relationship
 	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department,
-	@JoinColumn(name="deptid",nullable = false)//used to join the entity
+	@JoinColumn(name="DEPTID",nullable = false)//used to join the entity
 	private Department department;
 	
 	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
-	@JoinColumn(name="desid",nullable = false)
+	@JoinColumn(name="DESID",nullable = false)
 	private Designation designation;
 	
 	
+	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
+	@JoinColumn(name="ADDRESSID",nullable = false)
+	private AddressMaster address;
+
+	
 public Employe() {}
 	
-	public Employe(String name,Date joiningdate) {
-		this.name = name;
-		this.joiningdate = joiningdate;
-	}
 	
-	public Employe(Integer id,String name,Date joiningdate,Department department,Designation designation) {
+	public Employe(String name, Date joiningdate) {
+	super();
+	this.name = name;
+	this.joiningdate = joiningdate;
+    }
+
+	public Employe(Integer id, String name, Date joiningdate, Department department, Designation designation,
+			AddressMaster address) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.joiningdate = joiningdate;
 		this.department = department;
-		this.designation=designation;
+		this.designation = designation;
+		this.address = address;
 	}
 	
 	
-	
+
+	public AddressMaster getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(AddressMaster address) {
+		this.address = address;
+	}
+
+
 	public Employe(Integer id) {
 		super();
 		this.id = id;
@@ -96,7 +117,7 @@ public Employe() {}
 		this.joiningdate = joiningdate;
 	}
 	
-	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many students belong to one department
+	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
 	@JoinColumn(name="deptid",nullable = false)
 	public Department getDepartment() {
 		

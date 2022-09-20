@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity//mapped to database table
-@Table(name="dependants")//add the table name in the particular database
+@Table(name="DEPENDANTS")//add the table name in the particular database
 public class Dependants implements Serializable{
 	
 private static final long serialVersionUID = 1L;
@@ -21,22 +21,22 @@ private static final long serialVersionUID = 1L;
 
     @Id//primary key
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id",unique = true,nullable = false)
+    @Column(name="ID",unique = true,nullable = false)
 	private Integer id;
 
     
   //Lazy--only fetch the related entities from the database when we use the relationship
     @ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one employe
-    @JoinColumn(name="empid",nullable = false)//used to join the entity
+    @JoinColumn(name="EMPID",nullable = false)//used to join the entity
 	private Employe emp_id;
 
-    @Column(name="name",nullable = false)
+    @Column(name="NAME",nullable = false)
 	private String name;
 
-    @Column(name="relation",nullable = false)
+    @Column(name="RELATION",nullable = false)
 	private String relation;
 
-    @Column(name="age",nullable = false)
+    @Column(name="AGE",nullable = false)
 	private Double age;
 	
 	
