@@ -17,6 +17,9 @@ public interface DependantService {
 	
 	public String addDependant(DependantBean dep);
 	public String updateDependant(DependantBean dep);
+	public String deleteDependant(int id);
+	public Dependants  getDependants(int id);
+	
 	
 	
 }

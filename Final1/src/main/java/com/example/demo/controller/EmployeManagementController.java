@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.bean.EmployeBean;
 import com.example.demo.entities.Designation;
 import com.example.demo.entities.Employe;
+import com.example.demo.entities.EmployeAddressMaster;
 import com.example.demo.service.DepartmentService;
 import com.example.demo.service.DesignationService;
 import com.example.demo.service.EmployeService;
@@ -120,7 +121,7 @@ public class EmployeManagementController {
 	}
 	*/
 	
-@GetMapping(value="/employe/findall")// Lists all the student record in the student table
+/*@GetMapping(value="/employe/findall")// Lists all the student record in the student table
 	public List<Map<String,String>> findAllEmploye(){
 		Map<String,String> message ;
 		List<Map<String,String>> listOfMessages = new LinkedList<>();
@@ -146,11 +147,11 @@ public class EmployeManagementController {
 			listOfMessages.add(message);
 		}
 		return listOfMessages;
-	}
+	}*/
 	
 
-	//Finds Student details for the given id 
-		@GetMapping(value="/employe/find/{id}")
+/*	//Finds Student details for the given id 
+		@GetMapping(value="/employe/{id}")
 		public Map<String,String> findEmploye(@PathVariable Integer id){
 			//@PathVariable takes the part of url as value her {id} taken as id value
 			Map<String,String> message = new LinkedHashMap<>(); // to store student details
@@ -172,8 +173,9 @@ public class EmployeManagementController {
 			}
 			return message;
 		}
+		*/
 		
-		@DeleteMapping(value="/employe/delete/{id}")//deletes record from student table for the given id
+/*		@DeleteMapping(value="/employe/delete/{id}")//deletes record from student table for the given id
 		public Map<String,String> deleteEmploye(@PathVariable("id") Integer id){
 			System.out.println("\nrunning delete");
 			Map<String,String> message = new LinkedHashMap<>();
@@ -201,7 +203,7 @@ public class EmployeManagementController {
 				message.put("Error", "Employe id "+id+" is not found");
 			return message;
 		}
-	
+	*/
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/employe/add")
 	public String insertEmploye(@RequestBody EmployeBean emp)
@@ -215,7 +217,29 @@ public class EmployeManagementController {
 		return employeService.updateEmploye(emp);
 	}
 	
-
+	@DeleteMapping(path ="/employe/delete/{id}")
+	public String deleteAddress(@PathVariable int id)
+	{
+		return employeService.deleteEmploye(id);
+	}
+   
+	@GetMapping(value="/employe/find/{id}")
+	public Map<String,String> findEmployeAddressMaster(@PathVariable Integer id){
+		//@PathVariable takes the part of url as value her {id} taken as id value
+		Map<String,String> message = new LinkedHashMap<>(); // to store student details
+	Employe Master;
+	Master = this.employeService.getEmploye(id); //fetches the student record from the database
+			//Getting student detail with help of getter methods
+			message.put("ID", Master.getId().toString());
+			message.put("Name", Master.getName());
+			message.put("JoiningDate", Master.getJoiningDate().toString());
+			message.put("Designation", Master.getDesignation().getName());
+			message.put("Department", Master.getDepartment().getName());
+		//	message.put("PermanentAddress", Master.getAddress().getPermanentAddress());
+		//	message.put("CurrentAddress", Master.getAddress().getCurrentAddress());
+			
+		return message;
+	}
 
 
 }

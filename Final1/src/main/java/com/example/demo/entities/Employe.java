@@ -46,9 +46,9 @@ public class Employe {
 	private Designation designation;
 	
 	
-	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
+/*	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
 	@JoinColumn(name="ADDRESSID",nullable = false)
-	private AddressMaster address;
+	private AddressMaster address;*/
 
 	
 public Employe() {}
@@ -60,20 +60,19 @@ public Employe() {}
 	this.joiningdate = joiningdate;
     }
 
-	public Employe(Integer id, String name, Date joiningdate, Department department, Designation designation,
-			AddressMaster address) {
+	public Employe(Integer id, String name, Date joiningdate, Department department, Designation designation) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.joiningdate = joiningdate;
 		this.department = department;
 		this.designation = designation;
-		this.address = address;
+		//this.address = address;
 	}
 	
 	
 
-	public AddressMaster getAddress() {
+/*	public AddressMaster getAddress() {
 		return address;
 	}
 
@@ -81,7 +80,7 @@ public Employe() {}
 	public void setAddress(AddressMaster address) {
 		this.address = address;
 	}
-
+*/
 
 	public Employe(Integer id) {
 		super();

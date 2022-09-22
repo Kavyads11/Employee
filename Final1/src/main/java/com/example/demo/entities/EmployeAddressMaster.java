@@ -22,14 +22,16 @@ public class EmployeAddressMaster {
 	@Column(name="ADDRESS",nullable = false) // nullable checks whether null accepted, before db throws error
 	private String Address;
 	
-	@Column(name="Type",nullable = false)
-	private Integer Type;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	 @JoinColumn(name="TYPEID",nullable = false)
+	private AddressType Type;
 	
 	 @ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one employe
 	 @JoinColumn(name="EMPID",nullable = false)//used to join the entity
 	private Employe empid;
 
-	public EmployeAddressMaster(Integer id, String address, Integer type, Employe empid) {
+	public EmployeAddressMaster(Integer id, String address,AddressType type, Employe empid) {
 		super();
 		this.id = id;
 		Address = address;
@@ -37,7 +39,7 @@ public class EmployeAddressMaster {
 		this.empid = empid;
 	}
 
-	public EmployeAddressMaster(String address, Integer type) {
+	public EmployeAddressMaster(String address, AddressType type) {
 		super();
 		Address = address;
 		Type = type;
@@ -59,11 +61,11 @@ public class EmployeAddressMaster {
 		Address = address;
 	}
 
-	public Integer getType() {
+	public AddressType getType() {
 		return Type;
 	}
 
-	public void setType(Integer type) {
+	public void setType(AddressType type) {
 		Type = type;
 	}
 

@@ -1,4 +1,4 @@
-package com.example.demo.service;
+/*package com.example.demo.service;
 
 import javax.transaction.Transactional;
 
@@ -40,7 +40,7 @@ public class AddressMasterServiceImpl implements AddressMasterService {
 		master.setCurrentAddress(address.getCurrentAddress());
 		master.setPermanentAddress(address.getPermanentAddress());
 		addressMasterRepository.save(master);
-		return "employe updated succesfully";
+		return "address updated succesfully";
 	}
 	
 	public  AddressMaster  getAddress(int id)
@@ -54,4 +54,4 @@ public class AddressMasterServiceImpl implements AddressMasterService {
 		return "Entity deleted "+id;
 	}
 
-}
+}*/

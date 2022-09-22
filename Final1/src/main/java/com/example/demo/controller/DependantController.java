@@ -29,8 +29,7 @@ public class DependantController {
 	@Autowired
 	DependantService dependantService;
 	
-	@Autowired //tells the spring that, injection need to occur here, then spring searches for that StudentService component and injects it here
-	EmployeService employeService;
+
 	
 	
 /*	@RequestMapping(value="/dependant/insert")//inserts new dependantS record into the table
@@ -103,7 +102,7 @@ public class DependantController {
 	}
 	
 	*/
-	@GetMapping(value="/dependant/find/{id}")
+/*	@GetMapping(value="/dependant/{id}")
 	public Map<String,String> findDependants(@PathVariable Integer id){
 		//@PathVariable takes the part of url as value her {id} taken as id value
 		Map<String,String> message = new LinkedHashMap<>(); // to store student details
@@ -122,9 +121,9 @@ public class DependantController {
 			message.put("Error","Cannot find dependant with id "+id);
 		}
 		return message;
-	}
+	}*/
 	
-	@DeleteMapping(value="/dependant/delete/{id}")//deletes record from student table for the given id
+/*	@DeleteMapping(value="/dependant/delete/{id}")//deletes record from student table for the given id
 	public Map<String,String> deleteDependants(@PathVariable("id") Integer id){
 		System.out.println("\nrunning delete");
 		Map<String,String> message = new LinkedHashMap<>();
@@ -149,7 +148,7 @@ public class DependantController {
 			message.put("Error", "Dependant id "+id+" is not found");
 		return message;
 	}
-	
+	*/
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/dependant/add")
 	public String insertDependant(@RequestBody DependantBean dep)
@@ -162,5 +161,27 @@ public class DependantController {
 	public String updateDependant(@RequestBody DependantBean dep)
 	{
 		return dependantService.updateDependant(dep);
+	}
+	
+	@DeleteMapping(path ="/dependant/delete/{id}")
+	public String deleteDependant(@PathVariable int id)
+	{
+		return dependantService.deleteDependant(id);
+	}
+	
+	@GetMapping(value="/dependant/find/{id}")
+	public Map<String,String> findEmployeAddressMaster(@PathVariable Integer id){
+		//@PathVariable takes the part of url as value her {id} taken as id value
+		Map<String,String> message = new LinkedHashMap<>(); // to store student details
+	Dependants Master;
+	Master = this.dependantService.getDependants(id); //fetches the student record from the database
+			//Getting student detail with help of getter methods
+			message.put("ID", Master.getId().toString());
+			message.put("Name", Master.getName());
+			message.put("Age", Master.getAge().toString());
+			message.put("Relation", Master.getRelation());
+			message.put("Employe", Master.getEmp_id().getName());
+			
+		return message;
 	}
 }

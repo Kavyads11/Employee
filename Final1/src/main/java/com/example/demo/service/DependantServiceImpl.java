@@ -80,4 +80,14 @@ public class DependantServiceImpl implements DependantService {
 		dependantRepository.save(master);
 		return "dependant updated succesfully";
 	}
+	public String deleteDependant(int id)
+	{
+		dependantRepository.deleteById(id);
+		return "Entity deleted "+id;
+	}
+	
+	public  Dependants  getDependants(int id)
+	{
+		return dependantRepository.findById(id).get();
+	}
 }

@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -10,11 +11,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.bean.EmployeBean;
-import com.example.demo.entities.AddressMaster;
+//import com.example.demo.entities.AddressMaster;
 import com.example.demo.entities.Department;
 import com.example.demo.entities.Designation;
 import com.example.demo.entities.Employe;
+import com.example.demo.entities.EmployeAddressMaster;
 import com.example.demo.repository.EmployeRepository;
+
 
 
 
@@ -50,11 +53,11 @@ public class EmployeServiceImpl implements EmployeService {
 		return this.employeeRepository.findAll();
 	}
 	
-	@Override
+/*	@Override
 	public boolean deleteEmploye(Employe employe) {
 		this.employeeRepository.delete(employe);
 		return true;
-	}
+	}*/
 	
 	
 /*	public List<Employe> getAllEmployees(){
@@ -68,15 +71,15 @@ public class EmployeServiceImpl implements EmployeService {
 		Employe master = new Employe();
 		Department department = new Department();
 		Designation designation = new Designation();
-		AddressMaster address = new AddressMaster();
+	//	AddressMaster address = new AddressMaster();
 		department.setId(emp.getDepartment().getId());
 		designation.setId(emp.getDesignation().getId());
-		address.setId(emp.getAddress().getId());
+	//	address.setId(emp.getAddress().getId());
 		//master.setId(emp.getId());
 		master.setjoiningdate(emp.getjoiningdate());
 		master.setDepartment(department);
 		master.setDesignation(designation);
-		master.setAddress(address);
+	//	master.setAddress(address);
 		master.setName(emp.getName());
 		employeeRepository.save(master);
 		return "employe created succesfully";
@@ -87,15 +90,15 @@ public class EmployeServiceImpl implements EmployeService {
 		Employe master = new Employe();
 		Department department = new Department();
 		Designation designation = new Designation();
-		AddressMaster address = new AddressMaster();
+		//AddressMaster address = new AddressMaster();
 		department.setId(emp.getDepartment().getId());
 		designation.setId(emp.getDesignation().getId());
-		address.setId(emp.getAddress().getId());
+		//address.setId(emp.getAddress().getId());
 		master.setId(emp.getId());
 		master.setjoiningdate(emp.getjoiningdate());
 		master.setDepartment(department);
 		master.setDesignation(designation);
-		master.setAddress(address);
+		//master.setAddress(address);
 		master.setName(emp.getName());
 		employeeRepository.save(master);
 		return "employe updated succesfully";
@@ -103,7 +106,16 @@ public class EmployeServiceImpl implements EmployeService {
 
 	
 	
-	
+	public String deleteEmploye(int id)
+	{
+		employeeRepository.deleteById(id);
+		return "Entity deleted "+id;
+	}
+
+	public  Employe  getEmploye(int id)
+	{
+		return employeeRepository.findById(id).get();
+	}
 	
 
 }

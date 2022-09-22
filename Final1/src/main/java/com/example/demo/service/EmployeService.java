@@ -9,6 +9,7 @@ import java.util.Optional;
 import com.example.demo.bean.EmployeBean;
 import com.example.demo.entities.Dependants;
 import com.example.demo.entities.Employe;
+import com.example.demo.entities.EmployeAddressMaster;
 import com.example.demo.entities.EmployeJoin;
 
 
@@ -22,12 +23,14 @@ public interface EmployeService {
 	//public Employe updateEmploye(Employe employe);
 	public Optional<Employe> findEmploye(Integer id);
 	public Iterable<Employe> findAllEmploye(); 
-	public boolean deleteEmploye(Employe employe);
+	//public boolean deleteEmploye(Employe employe);
 	
 	
 	
 	public String addEmploye(EmployeBean emp);
 	public String updateEmploye(EmployeBean emp);
+	public String deleteEmploye(int id);
+	public Employe  getEmploye(int id);
 		
 	
 	
