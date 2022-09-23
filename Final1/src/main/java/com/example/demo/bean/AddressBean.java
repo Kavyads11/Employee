@@ -1,4 +1,4 @@
-/*package com.example.demo.bean;
+package com.example.demo.bean;
 
 public class AddressBean {
 	
@@ -45,4 +45,4 @@ public class AddressBean {
 	
 	
 
-}*/
+}

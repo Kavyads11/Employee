@@ -1,4 +1,4 @@
-/*package com.example.demo.controller;
+package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -47,4 +47,4 @@ public class AddressMasterController {
 		return addresMasterService.deleteAddress(id);
 	}
 
-}*/
+}

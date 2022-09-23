@@ -1,4 +1,4 @@
-/*package com.example.demo.service;
+package com.example.demo.service;
 
 import javax.transaction.Transactional;
 
@@ -54,4 +54,4 @@ public class AddressMasterServiceImpl implements AddressMasterService {
 		return "Entity deleted "+id;
 	}
 
-}*/
+}

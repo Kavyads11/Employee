@@ -31,7 +31,7 @@ public class EmployeAddressMaster {
 	 @JoinColumn(name="EMPID",nullable = false)//used to join the entity
 	private Employe empid;
 
-	public EmployeAddressMaster(Integer id, String address,AddressType type, Employe empid) {
+	public EmployeAddressMaster(Integer id, String address,AddressType type,Employe empid) {
 		super();
 		this.id = id;
 		Address = address;

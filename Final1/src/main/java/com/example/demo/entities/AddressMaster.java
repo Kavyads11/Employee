@@ -1,12 +1,16 @@
-/*package com.example.demo.entities;
+package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -24,6 +28,8 @@ public class AddressMaster implements Serializable {
 	
 	@Column(name="PERMANENTADDRESS",nullable = false) // nullable checks whether null accepted, before db throws error
 	private String PermanentAddress;
+	
+	
 
 	public Integer getId() {
 		return id;
@@ -61,14 +67,14 @@ public class AddressMaster implements Serializable {
 		PermanentAddress = permanentAddress;
 	}
 
-	public AddressMaster(String currentAddress, String permanentAddress) {
-		super();
-		CurrentAddress = currentAddress;
-		PermanentAddress = permanentAddress;
-	}
+	
+
+	
+
+	
 	
 	
 	
 	
 
-}*/
+}

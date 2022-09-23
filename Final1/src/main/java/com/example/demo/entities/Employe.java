@@ -1,7 +1,7 @@
 package com.example.demo.entities;
 
 import java.util.Date;
-
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -45,12 +47,20 @@ public class Employe {
 	@JoinColumn(name="DESID",nullable = false)
 	private Designation designation;
 	
+/*	@OneToMany(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
+	@JoinColumn(name="EMPLOYEADDRESS_ID",nullable = false)
+	private List<AddressMaster> addressMaster;*/
 	
 /*	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
-	@JoinColumn(name="ADDRESSID",nullable = false)
-	private AddressMaster address;*/
+	@JoinColumn(name="ADDRESS_ID",nullable = false)
+	private List<AddressList> addressList;*/
+	
+	
 
 	
+
+
+
 public Employe() {}
 	
 	
@@ -60,27 +70,31 @@ public Employe() {}
 	this.joiningdate = joiningdate;
     }
 
-	public Employe(Integer id, String name, Date joiningdate, Department department, Designation designation) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.joiningdate = joiningdate;
-		this.department = department;
-		this.designation = designation;
-		//this.address = address;
-	}
 	
 	
 
-/*	public AddressMaster getAddress() {
-		return address;
+/*public List<AddressList> getAddressList() {
+		return addressList;
 	}
 
 
-	public void setAddress(AddressMaster address) {
-		this.address = address;
+	public void setAddressList(List<AddressList> addressList) {
+		this.addressList = addressList;
 	}
 */
+
+
+
+
+//	public List<AddressMaster> getAddress() {
+//		return addressMaster;
+//	}
+//
+//
+//	public void setAddress(List<AddressMaster> addressMaster) {
+//		this.addressMaster = addressMaster;
+//	}
+
 
 	public Employe(Integer id) {
 		super();
@@ -88,10 +102,38 @@ public Employe() {}
 	}
 
 	
+/*	public List<EmployeAddressMaster> getAddressList() {
+		return addressList;
+	}
+
+
+	public void setAddressList(List<EmployeAddressMaster> addressList) {
+		this.addressList = addressList;
+	}*/
+
+
+	
+
+
 	public Integer getId() {
 		return this.id;
 	}
 	
+	
+	
+
+
+	public Employe(Integer id, String name, Date joiningdate, Department department, Designation designation) {
+	super();
+	this.id = id;
+	this.name = name;
+	this.joiningdate = joiningdate;
+	this.department = department;
+	this.designation = designation;
+	
+}
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -142,5 +184,8 @@ public Employe() {}
 		return "Employe [id=" + id + ", name=" + name + ", joiningdate=" + joiningdate + ", department=" + department + ", designation="
 				+ designation + "]";
 	}
+
+
+	
 	
 }

@@ -235,8 +235,8 @@ public class EmployeManagementController {
 			message.put("JoiningDate", Master.getJoiningDate().toString());
 			message.put("Designation", Master.getDesignation().getName());
 			message.put("Department", Master.getDepartment().getName());
-		//	message.put("PermanentAddress", Master.getAddress().getPermanentAddress());
-		//	message.put("CurrentAddress", Master.getAddress().getCurrentAddress());
+			message.put("PermanentAddress", Master.getAddress().getPermanentAddress());
+			message.put("CurrentAddress", Master.getAddress().getCurrentAddress());
 			
 		return message;
 	}

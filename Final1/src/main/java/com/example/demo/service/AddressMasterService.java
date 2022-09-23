@@ -1,4 +1,4 @@
-/*package com.example.demo.service;
+package com.example.demo.service;
 
 
 import com.example.demo.bean.AddressBean;
@@ -13,4 +13,3 @@ public interface AddressMasterService {
 	public String deleteAddress(int id);
 
 }
-*/

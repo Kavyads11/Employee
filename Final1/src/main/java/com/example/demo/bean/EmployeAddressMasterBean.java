@@ -32,7 +32,7 @@ public class EmployeAddressMasterBean {
 	public void setEmpid(Employe empid) {
 		this.empid = empid;
 	}
-	public EmployeAddressMasterBean(int id, String address, AddressType type, Employe empid) {
+	public EmployeAddressMasterBean(int id, String address, AddressType type,Employe empid) {
 		super();
 		this.id = id;
 		this.address = address;

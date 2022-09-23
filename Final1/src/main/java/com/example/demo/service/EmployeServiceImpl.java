@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.List;
 
+
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -11,6 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.bean.EmployeBean;
+import com.example.demo.entities.AddressMaster;
+//import com.example.demo.entities.AddressList;
+import com.example.demo.entities.AddressType;
 //import com.example.demo.entities.AddressMaster;
 import com.example.demo.entities.Department;
 import com.example.demo.entities.Designation;
@@ -71,10 +75,14 @@ public class EmployeServiceImpl implements EmployeService {
 		Employe master = new Employe();
 		Department department = new Department();
 		Designation designation = new Designation();
-	//	AddressMaster address = new AddressMaster();
+		
+		//AddressList list = new AddressList();
+		AddressMaster address = new AddressMaster();
 		department.setId(emp.getDepartment().getId());
 		designation.setId(emp.getDesignation().getId());
-	//	address.setId(emp.getAddress().getId());
+		
+	//	list.setId(emp.getAddressList().);
+	//	address.setId(((EmployeBean) emp.getAddress()).getId());
 		//master.setId(emp.getId());
 		master.setjoiningdate(emp.getjoiningdate());
 		master.setDepartment(department);
@@ -90,9 +98,11 @@ public class EmployeServiceImpl implements EmployeService {
 		Employe master = new Employe();
 		Department department = new Department();
 		Designation designation = new Designation();
+		
 		//AddressMaster address = new AddressMaster();
 		department.setId(emp.getDepartment().getId());
 		designation.setId(emp.getDesignation().getId());
+		
 		//address.setId(emp.getAddress().getId());
 		master.setId(emp.getId());
 		master.setjoiningdate(emp.getjoiningdate());

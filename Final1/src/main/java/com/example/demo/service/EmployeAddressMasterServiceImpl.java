@@ -33,7 +33,7 @@ public class EmployeAddressMasterServiceImpl implements EmployeAddressMasterServ
 		emp.setId(empadd.getEmpid().getId());
 		type.setId(empadd.getType().getId());
 		master.setAddress(empadd.getAddress());
-		//master.setType(empadd.getType());
+		master.setType(empadd.getType());
 		master.setType(type);
 		master.setEmpid(emp);
 		employeeAddressMasterRepository.save(master);
@@ -48,7 +48,7 @@ public class EmployeAddressMasterServiceImpl implements EmployeAddressMasterServ
 		type.setId(empadd.getType().getId());
 		emp.setId(empadd.getEmpid().getId());
 		master.setAddress(empadd.getAddress());
-	//	master.setType(empadd.getType());
+		master.setType(empadd.getType());
 		master.setType(type);
 		master.setEmpid(emp);
 		master.setId(empadd.getId());
