@@ -27,7 +27,7 @@ private static final long serialVersionUID = 1L;
     
   //Lazy--only fetch the related entities from the database when we use the relationship
     @ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one employe
-    @JoinColumn(name="EMPID",nullable = false)//used to join the entity
+    @JoinColumn(name="EMPID",referencedColumnName = "ID",nullable = false)//used to join the entity
 	private Employe emp_id;
 
     @Column(name="NAME",nullable = false)

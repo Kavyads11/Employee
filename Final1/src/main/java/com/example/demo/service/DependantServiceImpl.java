@@ -72,8 +72,8 @@ public class DependantServiceImpl implements DependantService {
 		Dependants master=new Dependants();
 		Employe emp=new Employe();
 		emp.setId(dep.getEmpid().getId());
-		master.setAge(dep.getAge());
 		master.setId(dep.getId());
+		master.setAge(dep.getAge());	
 		master.setName(dep.getName());
 		master.setRelation(dep.getRelation());
 		master.setEmp_id(emp);

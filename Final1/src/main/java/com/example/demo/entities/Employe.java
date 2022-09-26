@@ -39,17 +39,21 @@ public class Employe {
 	private Date joiningdate;
 	
 	//Lazy--only fetch the related entities from the database when we use the relationship
-	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department,
-	@JoinColumn(name="DEPTID",nullable = false)//used to join the entity
+	@ManyToOne(fetch=FetchType.EAGER)//Manytoone since many employe belong to one department,
+	@JoinColumn(name="DEPTID",referencedColumnName = "ID",nullable = false)//used to join the entity
 	private Department department;
 	
-	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
-	@JoinColumn(name="DESID",nullable = false)
+	@ManyToOne(fetch=FetchType.EAGER)//Manytoone since many employe belong to one department
+	@JoinColumn(name="DESID",referencedColumnName = "ID",nullable = false)
 	private Designation designation;
 	
-/*	@OneToMany(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
+/*	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
+	@JoinColumn(name="Address_ID",nullable = false)
+	private AddressMaster addressMaster;*/
+	
+	@OneToMany(fetch=FetchType.EAGER)//Manytoone since many employe belong to one department
 	@JoinColumn(name="EMPLOYEADDRESS_ID",nullable = false)
-	private List<AddressMaster> addressMaster;*/
+	private List<AddressMaster> addressMaster;
 	
 /*	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
 	@JoinColumn(name="ADDRESS_ID",nullable = false)
@@ -123,6 +127,19 @@ public Employe() {}
 	
 
 
+	
+
+
+/*	public AddressMaster getAddressMaster() {
+		return addressMaster;
+	}
+
+
+	public void setAddressMaster(AddressMaster addressMaster) {
+		this.addressMaster = addressMaster;
+	}*/
+
+
 	public Employe(Integer id, String name, Date joiningdate, Department department, Designation designation) {
 	super();
 	this.id = id;
@@ -130,7 +147,7 @@ public Employe() {}
 	this.joiningdate = joiningdate;
 	this.department = department;
 	this.designation = designation;
-	
+//	this.addressMaster = addressMaster;
 }
 
 

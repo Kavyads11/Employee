@@ -76,18 +76,19 @@ public class EmployeServiceImpl implements EmployeService {
 		Department department = new Department();
 		Designation designation = new Designation();
 		
+		
 		//AddressList list = new AddressList();
-		AddressMaster address = new AddressMaster();
+	//	AddressMaster address = new AddressMaster();
 		department.setId(emp.getDepartment().getId());
 		designation.setId(emp.getDesignation().getId());
 		
 	//	list.setId(emp.getAddressList().);
-	//	address.setId(((EmployeBean) emp.getAddress()).getId());
+	 //    address.setId(emp.getAddress().getId());
 		//master.setId(emp.getId());
 		master.setjoiningdate(emp.getjoiningdate());
 		master.setDepartment(department);
 		master.setDesignation(designation);
-	//	master.setAddress(address);
+		//master.setAddressMaster(address);
 		master.setName(emp.getName());
 		employeeRepository.save(master);
 		return "employe created succesfully";
@@ -99,16 +100,16 @@ public class EmployeServiceImpl implements EmployeService {
 		Department department = new Department();
 		Designation designation = new Designation();
 		
-		//AddressMaster address = new AddressMaster();
+	//	AddressMaster address = new AddressMaster();
 		department.setId(emp.getDepartment().getId());
 		designation.setId(emp.getDesignation().getId());
 		
-		//address.setId(emp.getAddress().getId());
+	//	address.setId(emp.getAddress().getId());
 		master.setId(emp.getId());
 		master.setjoiningdate(emp.getjoiningdate());
 		master.setDepartment(department);
 		master.setDesignation(designation);
-		//master.setAddress(address);
+	//	master.setAddressMaster(address);
 		master.setName(emp.getName());
 		employeeRepository.save(master);
 		return "employe updated succesfully";

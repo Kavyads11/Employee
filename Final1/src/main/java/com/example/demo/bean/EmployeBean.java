@@ -18,7 +18,7 @@ public class EmployeBean {
 	private DepartmentBean department;
 //	private List<AddressMaster> address;
 //	private List<AddressList> addressList;
-	//private AddressBean address;
+	private AddressBean address;
 
 	public Integer getId() {
 		return id;
@@ -62,14 +62,14 @@ public class EmployeBean {
 //	public void setAddress(List<AddressMaster> address) {
 //		this.address = address;
 //	}
-	public EmployeBean(Integer id, String name, Date joiningdate, DesignationBean designation, DepartmentBean department) {
+	public EmployeBean(Integer id, String name, Date joiningdate, DesignationBean designation, DepartmentBean department,AddressBean address) {
 	super();
 	this.id = id;
 	this.name = name;
 	this.joiningdate = joiningdate;
 	this.designation = designation;
 	this.department = department;
-//	this.address = address;
+	this.address = address;
 }
 	public void setDesignation(DesignationBean designation) {
 		this.designation = designation;
@@ -80,12 +80,12 @@ public class EmployeBean {
 	public void setDepartment(DepartmentBean department) {
 		this.department = department;
 	}
-/*	public AddressBean getAddress() {
+	public AddressBean getAddress() {
 		return address;
 	}
 	public void setAddress(AddressBean address) {
 		this.address = address;
 	}
-*/	
+	
 	
 }

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,7 +30,41 @@ public class AddressMaster implements Serializable {
 	@Column(name="PERMANENTADDRESS",nullable = false) // nullable checks whether null accepted, before db throws error
 	private String PermanentAddress;
 	
+	@Column(name="OFFICEADDRESS",nullable = false) // nullable checks whether null accepted, before db throws error
+	private String OfficeAddress;
 	
+	 @ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one employe
+	 @JoinColumn(name="EMPID",nullable = false)//used to join the entity
+	 private Employe emp_id;
+	
+
+	public Employe getEmp_id() {
+		return emp_id;
+	}
+
+	public void setEmp_id(Employe emp_id) {
+		this.emp_id = emp_id;
+	}
+
+	public String getOfficeAddress() {
+		return OfficeAddress;
+	}
+
+	public void setOfficeAddress(String officeAddress) {
+		OfficeAddress = officeAddress;
+	}
+
+	
+
+	public AddressMaster(Integer id, String currentAddress, String permanentAddress, String officeAddress,
+			Employe emp_id) {
+		super();
+		this.id = id;
+		CurrentAddress = currentAddress;
+		PermanentAddress = permanentAddress;
+		OfficeAddress = officeAddress;
+		this.emp_id = emp_id;
+	}
 
 	public Integer getId() {
 		return id;
@@ -60,11 +95,12 @@ public class AddressMaster implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AddressMaster(Integer id, String currentAddress, String permanentAddress) {
+	public AddressMaster(Integer id, String currentAddress, String permanentAddress,String officeAddress) {
 		super();
 		this.id = id;
 		CurrentAddress = currentAddress;
 		PermanentAddress = permanentAddress;
+		OfficeAddress = officeAddress;
 	}
 
 	

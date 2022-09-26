@@ -9,6 +9,7 @@ import com.example.demo.bean.AddressBean;
 import com.example.demo.bean.EmployeBean;
 import com.example.demo.entities.AddressMaster;
 import com.example.demo.entities.Department;
+import com.example.demo.entities.Dependants;
 import com.example.demo.entities.Designation;
 import com.example.demo.entities.Employe;
 import com.example.demo.repository.AddressMasterRepository;
@@ -27,8 +28,12 @@ public class AddressMasterServiceImpl implements AddressMasterService {
 	@Override
 	public String addAddressMaster(AddressBean address) {
 		AddressMaster master = new AddressMaster();
+		Employe emp = new  Employe();
+		emp.setId(address.getEmp_id().getId());
 		master.setCurrentAddress(address.getCurrentAddress());
 		master.setPermanentAddress(address.getPermanentAddress());
+		master.setOfficeAddress(address.getOfficeAddress());
+		master.setEmp_id(emp);
 		addressMasterRepository.save(master);
 		return "Address addedd succesfully";
 	}
@@ -36,11 +41,15 @@ public class AddressMasterServiceImpl implements AddressMasterService {
 	@Override
 	public String updateAddress(AddressBean address) {
 		AddressMaster master = new AddressMaster();
+		Employe emp=new Employe();
+		emp.setId(address.getEmp_id().getId());
 		master.setId(address.getId());
 		master.setCurrentAddress(address.getCurrentAddress());
+		master.setOfficeAddress(address.getOfficeAddress());
 		master.setPermanentAddress(address.getPermanentAddress());
+		master.setEmp_id(emp);
 		addressMasterRepository.save(master);
-		return "address updated succesfully";
+		return "Address updated succesfully";
 	}
 	
 	public  AddressMaster  getAddress(int id)
