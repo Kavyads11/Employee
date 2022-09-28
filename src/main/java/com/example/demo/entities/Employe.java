@@ -53,21 +53,20 @@ public class Employe {
 	@JoinColumn(name="Address_ID",nullable = false)
 	private AddressMaster addressMaster;*/
 	
-	@OneToMany(fetch=FetchType.EAGER)//Manytoone since many employe belong to one department
+/*	@OneToMany(fetch=FetchType.EAGER)//Manytoone since many employe belong to one department
 	@JoinColumn(name="EMPADDRES_ID",referencedColumnName = "ID",nullable = false)
-	private List<AddressMaster> addressMaster;
+	private List<AddressMaster> addressMaster;*/
+	
+	//cascade=CascadeType.PERSIST,
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)//Manytoone since many employe belong to one department
+	@JoinColumn(name="EMPADDRES_ID",referencedColumnName = "ID",nullable = false)
+	private List<EmployeAddressMaster> addressMaster;
 	
 	
 	
 /*	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
 	@JoinColumn(name="ADDRESS_ID",nullable = false)
 	private List<AddressList> addressList;*/
-	
-	
-
-	
-
-
 
 public Employe() {}
 	
@@ -78,8 +77,6 @@ public Employe() {}
 	this.joiningdate = joiningdate;
     }
 
-	
-	
 
 /*public List<AddressList> getAddressList() {
 		return addressList;
@@ -90,19 +87,6 @@ public Employe() {}
 		this.addressList = addressList;
 	}
 */
-
-
-
-
-	public List<AddressMaster> getAddress() {
-	return addressMaster;
-	}
-
-
-	public void setAddress(List<AddressMaster> addressMaster) {
-		this.addressMaster = addressMaster;
-	}
-
 
 	public Employe(Integer id) {
 		super();
@@ -120,43 +104,30 @@ public Employe() {}
 	}*/
 
 
-	
+	public List<EmployeAddressMaster> getAddressMaster() {
+		return addressMaster;
+	}
+
+
+	public void setAddressMaster(List<EmployeAddressMaster> addressMaster) {
+		this.addressMaster = addressMaster;
+	}
 
 
 	public Integer getId() {
 		return this.id;
 	}
 	
-	
-	
-
-
-	
-
-
-
-
-	
-
-
-
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 	
 	
-	
-
-
-	
-
-
-
 
 
 	public Employe(Integer id, String name, Date joiningdate, Department department, Designation designation,
-			List<AddressMaster> addressMaster) {
+			List<EmployeAddressMaster> addressMaster) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -215,10 +186,4 @@ public Employe() {}
 	}
 
 
-	
-	
-
-
-	
-	
 }

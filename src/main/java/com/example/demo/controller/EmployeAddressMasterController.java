@@ -55,9 +55,9 @@ public class EmployeAddressMasterController {
 	Master = this.employeAddressMasterService.getEmployeAddressMaster(id); //fetches the student record from the database
 			//Getting student detail with help of getter methods
 			message.put("ID", Master.getId().toString());
-			message.put("Address", Master.getAddress());
+			//message.put("Address", Master.getAddress());
 			message.put("Type", Master.getType().toString());
-			message.put("Employee", Master.getEmpid().getName());
+		//	message.put("Employee", Master.getEmpid().getName());
 		return message;
 	}
 

@@ -29,7 +29,7 @@ public interface EmployeService {
 	
 	
 	public Employe addEmploye(Employe emp);
-	public String updateEmploye(EmployeBean emp);
+	public Employe updateEmploye(Employe emp);
 	public String deleteEmploye(int id);
 	public Employe  getEmploye(int id);
 		

@@ -92,20 +92,6 @@ public class AddressMaster implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 
-	
-
-	
-
-	
-
-	
-
-	
-	
-	
-	
-	
 
 }

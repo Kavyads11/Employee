@@ -17,6 +17,7 @@ public class EmployeBean {
 	private Date joiningdate;
 	private DesignationBean designation;
 	private DepartmentBean department;
+	private List<EmployeAddressMaster> addressMaster;
 //	private List<AddressMaster> address;
 //	private List<AddressList> addressList;
 	
@@ -75,13 +76,25 @@ public class EmployeBean {
 		this.department = department;
 	}
 	public EmployeBean(Integer id, String name, Date joiningdate, DesignationBean designation,
-			DepartmentBean department) {
+			DepartmentBean department, List<EmployeAddressMaster> addressMaster) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.joiningdate = joiningdate;
 		this.designation = designation;
 		this.department = department;
+		this.addressMaster = addressMaster;
+	}
+	@Override
+	public String toString() {
+		return "EmployeBean [id=" + id + ", name=" + name + ", joiningdate=" + joiningdate + ", designation="
+				+ designation + ", department=" + department + ", addressMaster=" + addressMaster + "]";
+	}
+	public List<EmployeAddressMaster> getAddressMaster() {
+		return addressMaster;
+	}
+	public void setAddressMaster(List<EmployeAddressMaster> addressMaster) {
+		this.addressMaster = addressMaster;
 	}
 	
 	

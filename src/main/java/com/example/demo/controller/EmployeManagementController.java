@@ -216,7 +216,7 @@ public class EmployeManagementController {
 	}
 	
 	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value="/employe/update")
-	public String updateEmploye(@RequestBody EmployeBean emp)
+	public Employe updateEmploye(@RequestBody Employe emp)
 	{
 		return employeService.updateEmploye(emp);
 	}

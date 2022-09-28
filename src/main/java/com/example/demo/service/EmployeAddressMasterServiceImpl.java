@@ -28,14 +28,19 @@ public class EmployeAddressMasterServiceImpl implements EmployeAddressMasterServ
 	@Override
 	public String addEmployeAddressMaster(EmployeAddressMasterBean empadd) {
 		EmployeAddressMaster master = new EmployeAddressMaster();
-		Employe emp = new Employe();
-		AddressType type = new AddressType();
-		emp.setId(empadd.getEmpid().getId());
-		type.setId(empadd.getType().getId());
-		master.setAddress(empadd.getAddress());
+		//Employe emp = new Employe();
+		//AddressType type = new AddressType();
+		//emp.setId(empadd.getEmpid().getId());
+	//	type.setId(empadd.getType().getId());
+		//master.setAddress(empadd.getAddress());
+	//	master.setType(empadd.getType());
+	//	master.setType(type);
+		master.setCity(empadd.getCity());
+		master.setDistrict(empadd.getDistrict());
+		master.setState(empadd.getState());
 		master.setType(empadd.getType());
-		master.setType(type);
-		master.setEmpid(emp);
+		
+		//master.setEmpid(emp);
 		employeeAddressMasterRepository.save(master);
 		return "emplye address master addedd successfully";
 	}
@@ -45,12 +50,12 @@ public class EmployeAddressMasterServiceImpl implements EmployeAddressMasterServ
 		EmployeAddressMaster master = new EmployeAddressMaster();
 		Employe emp = new Employe();
 		AddressType type = new AddressType();
-		type.setId(empadd.getType().getId());
-		emp.setId(empadd.getEmpid().getId());
-		master.setAddress(empadd.getAddress());
+	//	type.setId(empadd.getType().getId());
+		//emp.setId(empadd.getEmpid().getId());
+		//master.setAddress(empadd.getAddress());
 		master.setType(empadd.getType());
-		master.setType(type);
-		master.setEmpid(emp);
+	//	master.setType(type);
+	//	master.setEmpid(emp);
 		master.setId(empadd.getId());
 		employeeAddressMasterRepository.save(master);
 		return "emplye address master addedd successfully";

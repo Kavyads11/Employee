@@ -5,50 +5,59 @@ import com.example.demo.entities.AddressType;
 
 public class EmployeAddressMasterBean {
 	private int id;
-	private String address;
-	private AddressType type;
-	private Employe empid;
+	private String state;
+	private String Type;
+	private String district;
+	private String city;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getAddress() {
-		return address;
+	public String getState() {
+		return state;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setState(String state) {
+		this.state = state;
 	}
-	public AddressType getType() {
-		return type;
+	public String getType() {
+		return Type;
 	}
-	public void setType(AddressType type) {
-		this.type = type;
+	public void setType(String type) {
+		Type = type;
 	}
-	public Employe getEmpid() {
-		return empid;
+	public String getDistrict() {
+		return district;
 	}
-	public void setEmpid(Employe empid) {
-		this.empid = empid;
+	public void setDistrict(String district) {
+		this.district = district;
 	}
-	public EmployeAddressMasterBean(int id, String address, AddressType type,Employe empid) {
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public EmployeAddressMasterBean(int id, String state, String type, String district, String city) {
 		super();
 		this.id = id;
-		this.address = address;
-		this.type = type;
-		this.empid = empid;
+		this.state = state;
+		this.Type = type;
+		this.district = district;
+		this.city = city;
+	}
+	public EmployeAddressMasterBean(String state, String type, String district, String city) {
+		super();
+		this.state = state;
+		this.Type= type;
+		this.district = district;
+		this.city = city;
 	}
 	public EmployeAddressMasterBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public EmployeAddressMasterBean(String address, AddressType type) {
-		super();
-		this.address = address;
-		this.type = type;
-	}
 	
 	
-
 }

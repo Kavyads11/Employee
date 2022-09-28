@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import java.util.List;
+
 
 
 import java.util.Optional;
@@ -21,13 +21,6 @@ import com.example.demo.entities.Designation;
 import com.example.demo.entities.Employe;
 import com.example.demo.entities.EmployeAddressMaster;
 import com.example.demo.repository.EmployeRepository;
-
-
-
-
-
-
-
 @Transactional
 @Service("employeeService")
 public class EmployeServiceImpl implements EmployeService {
@@ -94,27 +87,29 @@ public class EmployeServiceImpl implements EmployeService {
 		return "employe created succesfully";*/
 		
 		Employe master = new Employe();
-		AddressMaster add = new AddressMaster();
-		
-		master.setAddress(emp.getAddress());
+		//AddressMaster add = new AddressMaster();
+		//master.setAddressMaster(emp.getAddressMaster());
+		EmployeAddressMaster empadd=new  EmployeAddressMaster();
+	//	master.setAddress(emp.getAddress());
 		master.setjoiningdate(emp.getJoiningDate());
 		master.setName(emp.getName());
 		master.setDepartment(emp.getDepartment());
 		master.setDesignation(emp.getDesignation());
+		master.setAddressMaster(emp.getAddressMaster());
 		return employeeRepository.save(master);
 		
 	}
 
 	@Override
-	public String updateEmploye(EmployeBean emp) {
-		Employe master = new Employe();
+	public Employe updateEmploye(Employe emp) {
+/*		Employe master = new Employe();
 		Department department = new Department();
 		Designation designation = new Designation();
-		
+		EmployeAddressMaster empad= new EmployeAddressMaster();
 	//	AddressMaster address = new AddressMaster();
 		department.setId(emp.getDepartment().getId());
 		designation.setId(emp.getDesignation().getId());
-		
+		//empad.setId(emp.getAddressMaster().get(0));
 	//	address.setId(emp.getAddress().getId());
 		master.setId(emp.getId());
 		master.setjoiningdate(emp.getjoiningdate());
@@ -123,7 +118,18 @@ public class EmployeServiceImpl implements EmployeService {
 	//	master.setAddressMaster(address);
 		master.setName(emp.getName());
 		employeeRepository.save(master);
-		return "employe updated succesfully";
+		return "employe updated succesfully";*/
+		
+		Employe master = new Employe();
+		EmployeAddressMaster empadd=new  EmployeAddressMaster();
+		master.setjoiningdate(emp.getJoiningDate());
+		master.setId(emp.getId());
+		//empadd.setId(emp.getAddressMaster().get);
+		master.setName(emp.getName());
+		master.setDepartment(emp.getDepartment());
+		master.setDesignation(emp.getDesignation());
+		master.setAddressMaster(emp.getAddressMaster());
+		return employeeRepository.save(master);
 		
 }
 
