@@ -7,6 +7,8 @@ import java.util.List;
 
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+
 import com.example.demo.bean.EmployeBean;
 import com.example.demo.entities.Dependants;
 import com.example.demo.entities.Employe;
@@ -32,6 +34,7 @@ public interface EmployeService {
 	public Employe updateEmploye(Employe emp);
 	public String deleteEmploye(int id);
 	public Employe  getEmploye(int id);
+    public List<Employe> findPaginated(int pageNo , int pageSize);
 		
 	
 	

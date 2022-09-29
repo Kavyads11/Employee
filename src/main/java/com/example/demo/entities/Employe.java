@@ -58,7 +58,7 @@ public class Employe {
 	private List<AddressMaster> addressMaster;*/
 	
 	//cascade=CascadeType.PERSIST,
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)//Manytoone since many employe belong to one department
+	@OneToMany(cascade=CascadeType.ALL)//,fetch=FetchType.EAGER)//Manytoone since many employe belong to one department
 	@JoinColumn(name="EMPADDRES_ID",referencedColumnName = "ID",nullable = false)
 	private List<EmployeAddressMaster> addressMaster;
 	

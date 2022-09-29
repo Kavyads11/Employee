@@ -3,11 +3,17 @@ package com.example.demo.service;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -21,6 +27,8 @@ import com.example.demo.entities.Designation;
 import com.example.demo.entities.Employe;
 import com.example.demo.entities.EmployeAddressMaster;
 import com.example.demo.repository.EmployeRepository;
+
+import net.bytebuddy.asm.Advice.OffsetMapping.Sort;
 @Transactional
 @Service("employeeService")
 public class EmployeServiceImpl implements EmployeService {
@@ -146,6 +154,16 @@ public class EmployeServiceImpl implements EmployeService {
 	{
 		return employeeRepository.findById(id).get();
 	}
-	
 
+	@Override
+	public List<Employe> findPaginated(int pageNo, int pageSize) {
+		Pageable  paging=PageRequest.of(pageNo-1, pageSize+1);
+		Page<Employe> pageResult=employeeRepository.findAll(paging);
+		
+		return pageResult.toList();
+	}
+
+
+	
+	
 }
