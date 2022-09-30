@@ -18,5 +18,7 @@ import com.example.demo.entities.Employe;
 public interface EmployeRepository extends JpaRepository<Employe, Integer>{
 	
 	
+	
+	
 
 }

@@ -35,6 +35,8 @@ public interface EmployeService {
 	public String deleteEmploye(int id);
 	public Employe  getEmploye(int id);
     public List<Employe> findPaginated(int pageNo , int pageSize);
+    public List<Employe> findEmployeSortAsc(String name);
+    public List<Employe> findEmployeSortDes(String name);
 		
 	
 	

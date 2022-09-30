@@ -157,13 +157,21 @@ public class EmployeServiceImpl implements EmployeService {
 
 	@Override
 	public List<Employe> findPaginated(int pageNo, int pageSize) {
-		Pageable  paging=PageRequest.of(pageNo-1, pageSize+1);
+		Pageable  paging=PageRequest.of(pageNo-1, pageSize);
 		Page<Employe> pageResult=employeeRepository.findAll(paging);
 		
 		return pageResult.toList();
 	}
 
-
+  public List<Employe> findEmployeSortAsc(String name)
+  {
+	  return employeeRepository.findAll(org.springframework.data.domain.Sort.by(org.springframework.data.domain.Sort.Direction.ASC,name));
+  }
+	
+  public List<Employe> findEmployeSortDes(String name)
+  {
+	  return employeeRepository.findAll(org.springframework.data.domain.Sort.by(org.springframework.data.domain.Sort.Direction.DESC,name));
+  }
 	
 	
 }

@@ -286,5 +286,20 @@ public class EmployeManagementController {
 	 {
 		 return employeService.findPaginated(pageNo, pageSize);
 	 }
+	 
+	 @GetMapping("/employe/asc/{name}")
+	public List<Employe> getByNameSortAsc(@PathVariable String name)
+	{
+		List<Employe> emp = employeService.findEmployeSortAsc(name);
+		return emp;
+	}
 	
+	 
+	 @GetMapping("/employe/des/{name}")
+		public List<Employe> getByNameSortDes(@PathVariable String name)
+		{
+			List<Employe> emp = employeService.findEmployeSortDes(name);
+			return emp;
+		}
+		
 }
