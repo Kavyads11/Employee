@@ -1,39 +1,38 @@
 package com.example.demo.controller;
 
 
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.bean.EmployeBean;
-import com.example.demo.entities.Designation;
 import com.example.demo.entities.Employe;
-import com.example.demo.entities.EmployeAddressMaster;
+import com.example.demo.entities.PagedResponse;
 import com.example.demo.repository.EmployeRepository;
 import com.example.demo.service.DepartmentService;
 import com.example.demo.service.DesignationService;
 import com.example.demo.service.EmployeService;
+
+import net.kaczmarzyk.spring.data.jpa.domain.Equal;
+import net.kaczmarzyk.spring.data.jpa.web.annotation.And;
+import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
 
 
 
@@ -290,7 +289,7 @@ public class EmployeManagementController {
 	 @GetMapping("/employe/asc/{name}")
 	public List<Employe> getByNameSortAsc(@PathVariable String name)
 	{
-		List<Employe> emp = employeService.findEmployeSortAsc(name);
+		List<Employe> emp = employeService.employeSortAsc(name);
 		return emp;
 	}
 	
@@ -298,8 +297,29 @@ public class EmployeManagementController {
 	 @GetMapping("/employe/des/{name}")
 		public List<Employe> getByNameSortDes(@PathVariable String name)
 		{
-			List<Employe> emp = employeService.findEmployeSortDes(name);
+			List<Employe> emp = employeService.employeSortDes(name);
 			return emp;
 		}
 		
+	 
+	 @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE,value = "/employe/page")
+	    public PagedResponse<EmployeBean> getEmploye(
+	            @RequestParam(value = "id", required =false) Integer id ,
+	            @RequestParam(value = "name", required = false) String name,
+	            @RequestParam(value = "joiningdate", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date joiningdate,
+	            @RequestParam(value = "keyword", required = false) String keyword,
+	            @RequestParam(value = "page", defaultValue = "1", required = false) int page,
+	            @RequestParam(value = "size", defaultValue = "0", required = false) int size,
+	            @RequestParam(value = "sort", defaultValue = "createdDate", required = false) String sort,
+	            @RequestParam(value = "order", defaultValue = "desc", required = false) String order, 
+	            @And({  @Spec(path = "id", params = "id", spec = Equal.class),
+	                @Spec(path = "name", params = "name", spec = Equal.class),
+	                @Spec(path = "joiningdate", params = "joiningdate", spec = Equal.class)}) 
+	            Specification<Employe> spec) {
+
+	        Pageable pageable = (size != 0
+	                ? PageRequest.of(page - 1, size,order.trim().equals("desc") ? Sort.Direction.DESC : Sort.Direction.ASC,sort)
+	                : Pageable.unpaged());
+	        return employeService.findAllEmploye(pageable, spec);
+	    }
 }

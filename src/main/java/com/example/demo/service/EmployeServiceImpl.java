@@ -9,11 +9,13 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -26,6 +28,7 @@ import com.example.demo.entities.Department;
 import com.example.demo.entities.Designation;
 import com.example.demo.entities.Employe;
 import com.example.demo.entities.EmployeAddressMaster;
+import com.example.demo.entities.PagedResponse;
 import com.example.demo.repository.EmployeRepository;
 
 import net.bytebuddy.asm.Advice.OffsetMapping.Sort;
@@ -163,15 +166,30 @@ public class EmployeServiceImpl implements EmployeService {
 		return pageResult.toList();
 	}
 
-  public List<Employe> findEmployeSortAsc(String name)
+  public List<Employe> employeSortAsc(String name)
   {
 	  return employeeRepository.findAll(org.springframework.data.domain.Sort.by(org.springframework.data.domain.Sort.Direction.ASC,name));
   }
 	
-  public List<Employe> findEmployeSortDes(String name)
+  public List<Employe> employeSortDes(String name)
   {
 	  return employeeRepository.findAll(org.springframework.data.domain.Sort.by(org.springframework.data.domain.Sort.Direction.DESC,name));
   }
+
+/*@Override
+public PagedResponse<EmployeBean> pageResponse(Specification<Employe> spec, Pageable page) {
+	Page<Employe> entity =employeeRepository.findAll(spec, page);
+	
+	return new PagedResponse<EmployeBean>(entity.getContent(),entity.getTotalPages(),entity.getSize(),entity.getNumber(),entity.getTotalElements(),entity.isLast());
+}
+*/
+@Override
+public PagedResponse<EmployeBean> findAllEmploye(Pageable pageable, Specification<Employe> spec) {
+Page<Employe> entity =employeeRepository.findAll(spec, pageable);
 	
 	
+return new PagedResponse<EmployeBean>(entity.getSize(),entity.getTotalElements(),entity.isLast());
+	
+	
+}
 }
