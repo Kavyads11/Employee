@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 
 import java.util.Date;
+
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -303,7 +304,7 @@ public class EmployeManagementController {
 		
 	 
 	 @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE,value = "/employe/page")
-	    public PagedResponse<EmployeBean> getEmploye(
+	    public PagedResponse<Employe> getEmploye(
 	            @RequestParam(value = "id", required =false) Integer id ,
 	            @RequestParam(value = "name", required = false) String name,
 	            @RequestParam(value = "joiningdate", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date joiningdate,

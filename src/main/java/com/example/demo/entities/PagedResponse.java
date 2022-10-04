@@ -2,6 +2,8 @@ package com.example.demo.entities;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonPropertyOrder({ "page", "size", "totalElements", "totalPages", "last", "content" })

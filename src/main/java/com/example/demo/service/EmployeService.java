@@ -43,7 +43,7 @@ public interface EmployeService {
     public List<Employe> employeSortDes(String name);
     
   //  public PagedResponse<EmployeBean> pageResponse(Specification<Employe> spec , Pageable page);
-	public PagedResponse<EmployeBean> findAllEmploye(Pageable pageable, Specification<Employe> spec);
+	public PagedResponse<Employe> findAllEmploye(Pageable pageable, Specification<Employe> spec);
 		
 	
 	
