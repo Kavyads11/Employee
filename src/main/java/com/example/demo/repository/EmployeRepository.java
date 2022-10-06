@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.bean.EmployeBean;
 import com.example.demo.entities.Employe;
 
 
@@ -21,6 +22,7 @@ import com.example.demo.entities.Employe;
 public interface EmployeRepository extends  JpaRepository<Employe, Integer>,JpaSpecificationExecutor<Employe>{
 
 	Page<Employe> findAll(Specification<Employe> spec, Pageable page);
+	//Page<EmployeBean> findAllBean(Specification<EmployeBean> spec, Pageable page);
 	
 	
 	

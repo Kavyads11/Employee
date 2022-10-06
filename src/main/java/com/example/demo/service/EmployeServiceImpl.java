@@ -4,6 +4,7 @@ package com.example.demo.service;
 
 
 import java.util.Collections;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +21,7 @@ import com.example.demo.bean.EmployeBean;
 import com.example.demo.entities.Employe;
 import com.example.demo.entities.EmployeAddressMaster;
 import com.example.demo.entities.PagedResponse;
+//import com.example.demo.repository.EmployeBeanRepository;
 import com.example.demo.repository.EmployeRepository;
 @Transactional
 @Service("employeeService")
@@ -27,6 +29,9 @@ public class EmployeServiceImpl implements EmployeService {
 	
 	@Autowired
 	private EmployeRepository employeeRepository;
+	
+	//@Autowired
+	//private EmployeBeanRepository employeeBeanRepository;
 
 /*	@Override
 	public Employe insertEmploye(Employe employee) {
@@ -37,9 +42,9 @@ public class EmployeServiceImpl implements EmployeService {
 	public Employe updateEmploye(Employe employe) {
 
 		return this.employeeRepository.save(employe);
-	}
-	*/
-	@Override
+	}*/
+	
+/*	@Override
 	public Optional<Employe> findEmploye(Integer id) {
 		
 		return this.employeeRepository.findById(id);
@@ -174,7 +179,7 @@ public PagedResponse<EmployeBean> pageResponse(Specification<Employe> spec, Page
 */
 @Override
 public PagedResponse<Employe> findAllEmploye(Pageable pageable, Specification<Employe> spec) {
-Page<EmployeBean> entity =employeeRepository.findAll(spec, pageable);
+Page<Employe> entity =employeeRepository.findAll(spec, pageable);
 	
 //public PagedResponse(List<T> content, int page, int size, long totalElements, int totalPages, boolean last) {
 //return new PagedResponse<>(entity.getContent(),entity.getNumber(),entity.getSize(),entity.getTotalElements(),entity.getTotalPages(),entity.isLast());
@@ -182,4 +187,17 @@ return new PagedResponse<>(entity.getContent(), entity.getNumber(), entity.getSi
 		entity.getTotalElements(), entity.getTotalPages(), entity.isLast());
 	
 }
+
+
+
+
+/*public PagedResponse<EmployeBean> findAllEmployeBean(Pageable pageable, Specification<EmployeBean> spec) {
+Page<EmployeBean> entity =employeeBeanRepository.findAllBean(spec, pageable);
+	
+//public PagedResponse(List<T> content, int page, int size, long totalElements, int totalPages, boolean last) {
+//return new PagedResponse<>(entity.getContent(),entity.getNumber(),entity.getSize(),entity.getTotalElements(),entity.getTotalPages(),entity.isLast());
+return new PagedResponse<EmployeBean>(entity.getContent(), entity.getNumber(), entity.getSize(),
+		entity.getTotalElements(), entity.getTotalPages(), entity.isLast());
+	
+}*/
 }

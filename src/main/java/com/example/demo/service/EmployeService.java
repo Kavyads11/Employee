@@ -27,8 +27,8 @@ public interface EmployeService {
 	
 	//public Employe insertEmploye(Employe employe);
 	//public Employe updateEmploye(Employe employe);
-	public Optional<Employe> findEmploye(Integer id);
-	public Iterable<Employe> findAllEmploye(); 
+	//public Optional<Employe> findEmploye(Integer id);
+	//public Iterable<Employe> findAllEmploye(); 
 	//public boolean deleteEmploye(Employe employe);
 	
 	
@@ -40,10 +40,11 @@ public interface EmployeService {
 	
     public List<Employe> findPaginated(int pageNo , int pageSize);
     public List<Employe> employeSortAsc(String name);
-    public List<Employe> employeSortDes(String name);
+    public List<Employe> employeSortDes(String name);  
     
   //  public PagedResponse<EmployeBean> pageResponse(Specification<Employe> spec , Pageable page);
 	public PagedResponse<Employe> findAllEmploye(Pageable pageable, Specification<Employe> spec);
+	//public PagedResponse<EmployeBean> findAllEmployeBean(Pageable pageable, Specification<EmployeBean> spec);
 		
 	
 	
